@@ -10,6 +10,19 @@ device = 'cuda:0'
 model = model.to(device)
 with open('new_concept_all.json','r') as fp:
     cub2 = json.load(fp)
+cat_to_name = json.load(open('cat_to_name.json','r'))
+
+class_names = list(cub2.keys())
+shuffle_dict=[]
+new_cub2 = {}
+for i in range(102):
+    new_cub2[cat_to_name[str(i + 1)]] = cub2[cat_to_name[str(i + 1)]]
+
+print(cat_to_name)
+print(list(new_cub2.keys()))
+
+cub2 = new_cub2
+
 
 new_cub = {}
 for n in tqdm(cub2):

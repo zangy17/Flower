@@ -70,13 +70,13 @@ print(len(new_concepts_id))
 print(len(set(new_concepts_id)))
 
 
-
 new_concepts=[]
 new_class_label=class_label[new_concepts_id]
 for i in new_concepts_id:
     new_concepts.append(concepts[i])
 
 new_class_label = new_class_label.T
+
 with open('select_concept_'+shot+'shot'+str(num_concept)+'.json','w') as fw:
     json.dump(new_concepts,fw)
 np.save('class_label_des_'+shot+'shot'+str(num_concept)+'.npy',new_class_label)
